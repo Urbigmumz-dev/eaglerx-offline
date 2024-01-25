@@ -5,15 +5,20 @@ import { publicPath } from "ultraviolet-static";
 import { uvPath } from "@titaniumnetwork-dev/ultraviolet";
 import { join } from "node:path";
 import { hostname } from "node:os";
+import bodyParser from 'body-parser';
+import helmet from 'helmet';
 
 const bare = createBareServer("/bare/");
 const app = express();
 
+app.use(bodyParser.urlencoded({ extended: true, }));
+
+app.use(express.static("public/"));
 // Load our publicPath first and prioritize it over UV.
-app.use(express.static(publicPath));
+app.use("/uv/", express.static(publicPath));
 // Load vendor files last.
 // The vendor's uv.config.js won't conflict with our uv.config.js inside the publicPath directory.
-app.use("/uv/", express.static(uvPath));
+app.use("/uv/sw/", express.static(uvPath));
 
 app.use("/eaglercraft/", express.static('eaglercraft/'));
 
@@ -21,6 +26,19 @@ app.use("/eaglercraft/", express.static('eaglercraft/'));
 app.use((req, res) => {
   res.status(404);
   res.sendFile(join(publicPath, "404.html"));
+});
+
+app.get("/files/:dir/*", (req, res) => {
+  const dir = req.params.dir;
+  const file = req.params[0];
+
+  res.sendFile(file, {
+    root: `src/files/${dir}/`,
+  }, (err) => {
+    if (err) {
+      console.error(err.message);
+    }
+  });
 });
 
 const server = createServer();
