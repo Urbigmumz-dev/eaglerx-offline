@@ -14,7 +14,7 @@
 		<!--link type="image/png" rel="shortcut icon" href="favicon.png" /-->
 		<link type="image/png" rel="shortcut icon" href="https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png" />
 		<script type="text/javascript" src="ModAPI.js"></script>
-                <script type="text/javascript" src="ModLoader.js"></script>
+        <script type="text/javascript" src="ModLoader.js"></script>
 		<script type="text/javascript" src="ModGUI.js"></script>
 		<script type="text/javascript" src="classes.js"></script>
 		<script type="text/javascript">
@@ -32,12 +32,22 @@
 						worldsDB: "worlds",
 						logInvalidCerts: true,
 						servers: [
-							{ addr: "ws://localhost:8081/", name: "Local test server" }
+							{ addr: "wss://mc.asspixel.com/", name: "Asspixel" },
+							{ addr: "wss://mc.urbigmumz.com/", name: "UrbigmumzMC" },
+							{ addr: "wss://mc.arch.lol/", name: "ArchMC" },
+							{ addr: "wss://asianf4rmer.minecraft.pe/", name: "AsianF4rmerSMP" },
+							{ addr: "wss://clever-teaching.com/", name: "Clever Teaching" },
+							{ addr: "wss://zentic.cc", name: "Zentic" },
+							{ addr: "wss://legxndsmp.minecraft.pe", name: "LegendSMP" },
+							{ addr: "wss://sus.shhnowisnottheti.me", name: "CreaCraft" },
+							{ addr: "wss://", name: "" }
 						],
 						relays: [
-							{ addr: "wss://relay.deev.is/", comment: "lax1dude relay #1", primary: relayId == 0 },
-							{ addr: "wss://relay.lax1dude.net/", comment: "lax1dude relay #2", primary: relayId == 1 },
-							{ addr: "wss://relay.shhnowisnottheti.me/", comment: "ayunami relay #1", primary: relayId == 2 }
+							{ addr: "wss://relay.urbigmumz.com/", comment: "Urbigmumz relay #1", primary: relayId == 0 },
+							{ addr: "wss://relay.urbigmumz.annoyingdog.site/", comment: "Urbigmumz relay #2", primary: relayId == 1 },
+							{ addr: "wss://relay.deev.is/", comment: "lax1dude relay #1", primary: relayId == 2 },
+							{ addr: "wss://relay.lax1dude.net/", comment: "lax1dude relay #2", primary: relayId == 3 },
+							{ addr: "wss://relay.shhnowisnottheti.me/", comment: "ayunami relay #1", primary: relayId == 4 }
 						]
 					};
 					
