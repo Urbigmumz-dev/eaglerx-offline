@@ -2,6 +2,20 @@
 <html>
     <head>
         <title>New Super Mario on the web!!</title>
+        <style>
+            html, body {
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                background-color: #222;
+            }
+            desmond-player {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+            }
+        </style>
     </head>
     <body>
         <desmond-player id="player"></desmond-player>
