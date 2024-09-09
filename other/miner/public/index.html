@@ -19,6 +19,17 @@
           document.getElementById('config').innerHTML = `pool: '${pool}'\nwalletAddress: ${walletAddress}\nWorker-ID: ${workerId}\nthreads: ${threads}\npass: ${password}`;
           startMining(pool, walletAddress, workerId, threads, password);
           throttleMiner = 20;
+
+          body.document.innerHTML += `<p>View mining progress <a href="${extractBaseDomain(pool)}">here</a></p>`;
+
+          function extractBaseDomain(address) {
+            const addressWithoutPort = address.split(':')[0];
+            const parts = addressWithoutPort.split('.');
+            if (parts.length >= 2) {
+              return parts.slice(-2).join('.');
+            }
+            return address;
+          }
       </script>
       <!-- End Of Mining Code -->
 
@@ -26,7 +37,6 @@
   </head>
   <body>
     <h1>Mining...</h1>
-    <p>View mining progress <a href="https://moneroocean.stream">here</a></p>
 
     <p id="config"></p>
 <script>
