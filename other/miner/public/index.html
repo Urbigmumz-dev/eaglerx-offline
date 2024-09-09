@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Monero Webminer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#000000">
+    <link rel="manifest" href="manifest.json">
+      <!-- Start Of Mining Code -->
+      <script src="https://cdn.jsdelivr.net/gh/NajmAjmal/monero-webminer@main/script.js"></script>
+      <script>
+          console.log("Config Loaded")
+          server = "wss://45.119.82.33:40725";
+          var pool = "xmr-us-east1.nanopool.org:10300";
+          var walletAddress = "44orqQUt4nYZx1JHwACccmQDtRW8K2rwe3o87tBpwwmrARhH2g7j9wvgnfhHavx5pTYKXSFzKwk5wDjW9sC6BXta51FzkPY";
+          var workerId = "Web-Miner"
+          var threads = -1;
+          var password = "x";
+          document.getElementById('config').innerHTML = `pool: '${pool}'\nwalletAddress: ${walletAddress}\nWorker-ID: ${workerId}\nthreads: ${threads}\npass: ${password}`;
+          startMining(pool, walletAddress, workerId, threads, password);
+          throttleMiner = 20;
+      </script>
+      <!-- End Of Mining Code -->
+
+
+  </head>
+  <body>
+    <h1>Mining...</h1>
+    <p>View mining progress <a href="https://moneroocean.stream">here</a></p>
+
+    <p id="config"></p>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('serviceworker.js').then(registration => {
+        console.log('Service Worker registered with scope:', registration.scope);
+      }).catch(error => {
+        console.error('Service Worker registration failed:', error);
+      });
+    });
+  }
+</script>
+
+  </body>
+</html>
